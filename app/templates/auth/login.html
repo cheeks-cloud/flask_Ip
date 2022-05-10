@@ -1,0 +1,24 @@
+<div class="container login-page">
+	<div class="post mt150">
+	    <header>
+	        <h1>
+	            Sign in to Account
+	        </h1>
+	    </header>
+	    <div id="wrapper" class="home mt20">
+		    <div class="archive">
+	            <form action="" method="POST" role="form">
+	            	{{ login_form.csrf_token }}
+	            	<div class="form-group">
+	            		{{ login_form.username(class_="form-control squared",placeholder="Username",autocomplete="off") }}
+	            	</div>
+	            	<div class="form-group">
+	            		{{ login_form.password(class_="form-control squared",placeholder="Password",autocomplete="off") }}
+	            	</div>
+	            	{{ login_form.login(class="btn btn-primary btn-block btn-no-radius btn-padding") }}
+	            </form>
+	            	
+	        </div>
+    	</div>
+	</div>
+</div>
