@@ -37,3 +37,15 @@ class Role(db.Model):
     def __repr__(self):
         return f'User {self.name}' 
 
+class Comment:
+    all_comments = []
+
+    def __init__(self,post):
+        self.post = post
+
+    def save_comment(self):
+        Comment.all_comments.append(self)
+
+    @classmethod
+    def clear_comments(cls):
+        Comment.all_comments.clear()
