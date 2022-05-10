@@ -1,12 +1,13 @@
 from . import db 
 from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin
 
-
-
-class User(db.Model):
+class User(UserMixin,db.Model):
   __tablename__ = 'users'
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(255))
+  email = db.Column(db.String(255),unique=True,index=True)
+  role_id = 
   pass_secure = db.Column(db.String(255)) @property
 
   
@@ -25,6 +26,8 @@ class User(db.Model):
 
   def __repr__(self):
     return f'User {self.username}'
+
+
 
 class Role(db.Model):
     __tablename__ = 'roles'
@@ -49,3 +52,14 @@ class Comment:
     @classmethod
     def clear_comments(cls):
         Comment.all_comments.clear()
+
+#to display all comment for a particular post
+    @classmethod
+    def get_comments(cls,id):
+        response = []
+
+        for comment in cls.all_comments:
+            if comment.post_id == id:
+                response.append(comment)
+
+        return response

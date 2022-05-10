@@ -1,0 +1,12 @@
+{% import 'macros.html' as macro%}
+
+<div class="row">
+  <h2>Comments</h2>
+  {% if comment%}
+    {{macro.displayComment(comment)}}
+  {% else%}
+    <h4> this post has no comment yet</h4>
+
+  <a class="btn btn-success btn-lg text-center" href="/x/x/x/{{post.id}}"> Write a new Comment</a>
+
+</div>
