@@ -2,7 +2,8 @@ from distutils.debug import DEBUG
 
 
 class Config:
-  pass
+  
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:cheeks@localhost/piches'
 
 class ProdConfig(Config):
   pass
