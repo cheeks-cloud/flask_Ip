@@ -9,12 +9,12 @@ class User(UserMixin,db.Model):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(255))
   email = db.Column(db.String(255),unique=True,index=True)
-  role_id =db.Column(db.Integer,db.ForeignKey('roles.id')) 
+  comment = db.relationship('comment', backref='all_users',lazy='dynamic')
   bio = db.Column(db.String(255))
   profile_pic_path = db.Column(db.String())
   pass_secure = db.Column(db.String(255)) @property
 
-  
+  @property
   def password(self):
       raise AttributeError('You cannot read the password attribute')
 
@@ -34,19 +34,22 @@ class User(UserMixin,db.Model):
     return f'User {self.username}'
 
 
+class Post(db.Model):
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(80),)
+    on = db.Column(db.Text,)
+    votes = db.Column(db.Integer,)
+    comment = db.relationship('comment', backref='all_users',lazy='dynamic')
 
-class Role(db.Model):
-    __tablename__ = 'roles'
+    def get_posts():
+        pass
+    def get_comments():
+        pass
 
-    id = db.Column(db.Integer,primary_key = True)
-    name = db.Column(db.String(255))
-    users = db.relationship('User',backref = 'role',lazy="dynamic")
+ 
 
-
-    def __repr__(self):
-        return f'User {self.name}' 
-
-class Comment:
+class Comment(db.Model):
     all_comments = []
 
     def __init__(self,post):
