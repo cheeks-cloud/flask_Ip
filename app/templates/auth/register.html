@@ -1,59 +1,23 @@
-<!-- {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% import 'macros.html' as macro %}
 
-
-{% block header %}
-	<h1>{% block title %}One Minute Pitch - Create Account{% endblock %}</h1>
-{% endblock %}
-
  
-{% block content %} -->
+{% block content %} 
+	<div> 
+		{{wtf.quick_form(registration_form)}}
 
+		<p>Have an account? 
+			<a href="{{url_for('auth.login')}}"> Log IN </a>
+		</p>
 
-<div class="container register-user">
-	<div class="post">
-	    <header>
-	        <h1>
-	            Create Account
-	        </h1>
-	        <h2 class="headline">
-	            One Minute Pitch 
-	        </h2>
-	    </header>
-	    <div id="wrapper" class="home mt20">
-		    <div class="archive mb0">
-	            <form action="" method="POST" role="form">
-	            	{{ registration_form.csrf_token }}
-	            	<div class="form-group">
-	            		{{ registration_form.username(class_="form-control squared",placeholder="Username",autocomplete="off") }}
-	            	</div>
-	            	<div class="form-group">
-	            		{{ registration_form.email(class_="form-control squared",placeholder="Email Address",autocomplete="off") }}
-	            	</div>
-	            	<div class="form-group">
-	            		{{ registration_form.password(class_="form-control squared",placeholder="Password",autocomplete="off") }}
-	            	</div>
-	            	<div class="form-group">
-	            		{{ registration_form.confirm_password(class_="form-control squared",placeholder="Confirm Password",autocomplete="off") }}
-	            	</div>
-	            	
-	            	{{ registration_form.submit(class="btn btn-primary btn-block btn-no-radius btn-padding") }}
-	            </form>
-	        </div>
-    	</div>
 	</div>
-</div>
-<div>
-	{{wtf.quick_form(registration_form)}}
-
-</div>
 
 
-<footer class="registerUser" id="footer">
-    <p class="small">
-         Powered by © Copyright 2022
-        <i class="fa fa-heart" aria-hidden="true"></i> Cheeks Cloud
-    </p>
-</footer>
+	<footer class="registerUser" id="footer">
+			<p class="small">
+					Powered by © Copyright 2022
+					<i class="fa fa-heart" aria-hidden="true"></i> Cheeks Cloud
+			</p>
+	</footer>
 
-<!-- {% endblock%} -->
+{% endblock%}

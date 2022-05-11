@@ -1,7 +1,11 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 
+ 
+{% block content %} 
 
 <div class="container">
   {{wtf.quick_form(form)}}
 </div>
 
-
+{% endblock %}

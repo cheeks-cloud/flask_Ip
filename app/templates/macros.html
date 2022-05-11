@@ -1,11 +1,36 @@
+{%extends 'base.html'%}
+{% macro display(posts) %}
 
-
-
-{% macro displayComment(comment_list) %}
-  {% for comment in comment_list %}
-  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 comment-card">
-   <p>{{comment.comment | truncate(30) }} %}</p>
+  {% if posts %}
+  <div class="container">
+    {% for post in posts %}
   </div>
-  {% endfor %}
+  <h3> Post Written by: {{post.get_writer(post.writer_id)}}  </h3>
+  <h4>  its in {{post.category}} Category </h4>
+  <p> The post is <i> {{post.about}} </i> </p>
+  <p> It has {{post.votes}} number of Votes </p>
+
+
+      {% if post.get_comments(post.id) %}
+      <h2> Here are the comments </h2>
+      <div class="comments">
+        {% for comment in post.get_comments(post.id) %}
+        <p>
+          {{comment.get_writer(commen.writer)}} commented that:<br>
+          {{comment.content}}
+        </p>
+          {% endfor %}
+      </div>
+      {% else %}
+      <p> There are no comments available on this post </p>
+
+      {% endif %}
+
+    {%endfor%} 
+    </div>
+  {%else%}
+  <p>You have to add a post </p>
+  {% endif %}
+
   
 {%endmacro %}
