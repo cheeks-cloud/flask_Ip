@@ -2,6 +2,7 @@ from flask import Flask
 from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_bootstrap import Bootstrap
 
 
 login_manager = LoginManager()
@@ -26,7 +27,7 @@ def create_app(config_name):
   app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
 
 
-
+  bootstrap =Bootstrap(app)
   db.init_app(app)
   login_manager.init_app(app)
 

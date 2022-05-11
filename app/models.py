@@ -9,10 +9,10 @@ class User(UserMixin,db.Model):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(255))
   email = db.Column(db.String(255),unique=True,index=True)
-  comment = db.relationship('comment', backref='all_users',lazy='dynamic')
+#   comment = db.relationship('comment', backref='all_users',lazy='dynamic')
   bio = db.Column(db.String(255))
   profile_pic_path = db.Column(db.String())
-  pass_secure = db.Column(db.String(255)) @property
+  pass_secure = db.Column(db.String(255))
 
   @property
   def password(self):
@@ -49,7 +49,7 @@ class Post(db.Model):
 
  
 
-class Comment(db.Model):
+class Comment():
     all_comments = []
 
     def __init__(self,post):
