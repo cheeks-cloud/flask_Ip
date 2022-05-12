@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from . import login_manager
 
 
+
 class User(UserMixin,db.Model):
   __tablename__ = 'users'
   id = db.Column(db.Integer, primary_key=True)
@@ -29,9 +30,10 @@ class User(UserMixin,db.Model):
 
   @login_manager.user_loader
   def load_user(user_id):
-      return User.query.get(int(user_id))  
+    return User.query.get(int(user_id))  
+
+
       
- 
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -50,7 +52,7 @@ class Post(db.Model):
         return writer.username
 
     def get_comments(self,post):
-        all_comments =Comment.query.filter_by(post).all()
+        all_comments = Comment.query.filter_by(post).all()
         return all_comments
 
  

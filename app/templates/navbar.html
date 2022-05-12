@@ -5,37 +5,41 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{url_for('main.index')}}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Music</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Fashion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Tech</a>
-      </li>
-      
-    </ul>
-     <ul class="nav navbar-nav navbar-right">
-      {% if current_user.is_authenticated %}
 
-      <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{url_for('main.index')}}">
+        <button class="btn btn-sm" id="add-btn">HOME</button> </a>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link " href="{{url_for('auth.register')}}">Register</a>
+      </li>
       
-      <li>
+      <li class="nav-item">
+        <a class="nav-link " href="{{url_for('auth.login')}}">LogIn</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link " href="{{url_for('auth.logout')}}">LOGOUT</a>
       </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link " href="{{url_for('auth.login')}}">Sign in</a>
-      </li>
-      {% endif %}
+      
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {% if current_user.is_authenticated %}
+      
+          
+        <li class="nav-item">
+          <li>
+            <a  class="nav-link" href="{{url_for('auth.profile',uname=current_user.username)}}">
+            <button class="btn btn-sm" id="prof">Profile</button></a>
+          </li>
    
+          <li style="color:black;padding:15px;">{{current_user.username}}</li>
+      {% endif %}
+  </li>
   </div>
 </nav>
+
+
 
 
 

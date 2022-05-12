@@ -11,15 +11,14 @@
   <title>Posts</title>
 </head>
 <body>
+  
   {% block navbar %}
-    {% include 'navbar.html' %}
+    {% include 'navbar.html' with context %}
   {% endblock %}
 
-
-  {% block main %}
+  {% block content %}
   
   {%endblock %}
-
 
 
 </body>

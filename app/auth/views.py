@@ -16,18 +16,13 @@ def login():
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
-
+            
         flash('Invalid username or Password')
 
     title = "Posts login"
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 
-@auth.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for("main.index"))
 
 #registering
 @auth.route('/register',methods = ["GET","POST"])
@@ -38,10 +33,27 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to Posts and Pitches","email/welcome_user",user.email,user=user)
-
         return redirect(url_for('auth.login'))
     title = "New Account"
-    return render_template('auth/register.html',registration_form = form,title=title)
+
+    return render_template('auth/register.html',form = form,title=title)
+
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("main.index"))
+
+
+@auth.route('/Profile/<uname>/profile')
+@login_required
+def profile(uname):
+     user = User.query.filter_by(username = uname).first()
+     print(user)
+     return render_template('profile/profile.html',user = user)
+
+
+
 
   

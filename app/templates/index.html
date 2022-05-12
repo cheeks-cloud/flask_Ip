@@ -1,12 +1,50 @@
 {% extends 'base.html' %}
-{% import 'macros.html' as macro %}
+
+
 {% block styles%}
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
+
+
 {% block content %}
+
 <div class="container">
-    {{macros.display(posts)}}
+    {% if posts %}
+    <div class="container">
+      {% for post in posts %}
+        <h3> Post Written by: {{post.get_writer(post.writer_id)}}  </h3>
+        <h4>  its in {{post.category}} Category </h4>
+        <p> The post is <i> {{post.about}} </i> </p>
+        <p> It has {{post.votes}} number of Votes </p>
+  
+    </div>
+        {% if post.get_comments(post.id) %}
+        <h2> Here are the comments </h2>
+        <div class="comments">
+          {% for comment in post.get_comments(post.id) %}
+          <p>
+            {{comment.get_writer(comment.writer)}} commented that:<br>
+  
+            {{comment.about}}
+          </p>
+            {% endfor %}
+        </div>
+        {% else %}
+        
+        <p> There are no comments available on this post </p>
+  
+        {% endif %}
+  
+      {%endfor%} 
+
+      </div>
+
+    {%else%}
+
+    <p>Be the first to add a post </p>
+
+    {% endif %}
 </div>
 
 {% endblock %}

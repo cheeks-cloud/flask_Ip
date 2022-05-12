@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
-{% import 'macros.html' as macro %}
-
+{% import 'bootstrap/wtf.html' as wtf %}
  
 {% block content %} 
-	<div> 
-		{{wtf.quick_form(form)}}
+{{title}}
+		<div>
+			{{wtf.quick_form(form)}}
+		</div>
+	
 
 		<p>Have an account? 
 			<a href="{{url_for('auth.login')}}"> Log IN </a>
 		</p>
 
-	</div>
 
 
 	<footer class="registerUser" id="footer">
 			<p class="small">
 					Powered by © Copyright 2022
-					<i class="fa fa-heart" aria-hidden="true"></i> Cheeks Cloud
+					<i class="fa fa-heart" aria-hidden="true"> Cheeks Cloud</i> 
 			</p>
 	</footer>
 

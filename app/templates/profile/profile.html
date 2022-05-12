@@ -1,11 +1,11 @@
 
 {% extends 'base.html' %}
-{% import 'macros.html' as macro %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
 
  
 {% block content %} 
-
-
     <div class="container">
       <div class="row">
       <!-- displaying  Username-->
@@ -21,7 +21,7 @@
         </div>
       
         <!--Display profile photo-->
-        <div class="col-md-4">
+        <div class="col-md-8">
       
           {% if user.profile_pic_path %}
           <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
@@ -34,26 +34,34 @@
         {% endif %}
       </div>
       </div>
-        <div class="container">
-          <div class="col-md-4">
-            {% if user.profile_pic_path %}
+      <div class="container">
+        {% if user == current_user %}
+        <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+    
+          <input type="file"  name="photo" class="form-control" required>
+          <input type="submit">
+        </form>
+        {% endif %}
+
+      </div>
         
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
-        
-            {%else%}
-            <p>No profile picture</p>
-        
-            {% endif %}
-        
-                {% if user == current_user %}
-            <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
-        
-              <input type="file"  name="photo" class="form-control" required>
-              <input type="submit">
-            </form>
-              {% endif %}
+               
           </div>
           
 
         </div>
+        <div class="pitch">
+
+          <h3>  Post A Pitch  </h3>
+          <p>Click the button below to add Pitches</p>
+          <a href=" {{url_for('main.write_pitch')}} "> <button> click Me  </button></a>
+   
+         </div>
+
+        <a href="{{url_for('main.index')}}"> <button>Back Home</button></a>
+        
+     
+
+
+
 {% endblock %}
