@@ -17,7 +17,7 @@
         {% for comment in post.get_comments(post.id) %}
         <p>
           {{comment.get_writer(commen.writer)}} commented that:<br>
-          {{comment.content}}
+          {{comment.about}}
         </p>
           {% endfor %}
       </div>
