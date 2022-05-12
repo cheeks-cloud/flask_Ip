@@ -6,11 +6,12 @@ from flask_bootstrap import Bootstrap
 
 
 login_manager = LoginManager()
+
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
 db=SQLAlchemy()
-
+bootstrap = Bootstrap()
 
 
 def create_app(config_name):
@@ -27,7 +28,7 @@ def create_app(config_name):
   app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
 
 
-  bootstrap =Bootstrap(app)
+  bootstrap.init_app(app )
   db.init_app(app)
   login_manager.init_app(app)
 

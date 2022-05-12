@@ -31,9 +31,7 @@ class User(UserMixin,db.Model):
   def load_user(user_id):
       return User.query.get(int(user_id))  
       
-  def __repr__(self):
-    return f'User {self.username}'
-
+ 
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -81,33 +79,3 @@ class Comment(db.Model):
    
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-    # all_comments = []
-
-#     def __init__(self,post):
-#         self.post = post
-
-#     def save_comment(self):
-#         Comment.all_comments.append(self)
-
-#     @classmethod
-#     def clear_comments(cls):
-#         Comment.all_comments.clear()
-
-# #to display all comment for a particular post
-#     @classmethod
-#     def get_comments(cls,id):
-#         response = []
-
-#         for comment in cls.all_comments:
-#             if comment.post_id == id:
-#                 response.append(comment)
-
-#         return response

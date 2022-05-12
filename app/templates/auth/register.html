@@ -4,7 +4,7 @@
  
 {% block content %} 
 	<div> 
-		{{wtf.quick_form(registration_form)}}
+		{{wtf.quick_form(form)}}
 
 		<p>Have an account? 
 			<a href="{{url_for('auth.login')}}"> Log IN </a>

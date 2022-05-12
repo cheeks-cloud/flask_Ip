@@ -1,9 +1,11 @@
 from distutils.debug import DEBUG
 
 
+
 class Config:
   
   SQLCHEMY_TRACK_MODIFICATIONS = False
+  SECRET_KEY ='aNGIE'
 class ProdConfig(Config):
   pass
 
