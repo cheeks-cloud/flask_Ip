@@ -1,4 +1,4 @@
-# 
+# Pitches $ Posts
 
 
 ### version vi.o.3
@@ -16,7 +16,7 @@
 + [BDD](#bdd)
 
 ## Description
-<p> </p>
+<p>  this si an application where a user can post a pitch, comment on others pitches and vote on them also</p>
 
 ## Installation
 
@@ -29,9 +29,9 @@
 ## setup/installation instructions
 * you need to have python installed first
 * you also need pip,and a virtual environment with flask.
-* You can fork te project from My github and clone it to ge all  files .
+* You can fork the project from My github and clone it to ge all  files .
  
-
+* you also need to install all packages that i have used like login.mail as you go along with the project
  [Go back to the top]( )
 
  ## Technology Used
@@ -47,12 +47,12 @@
   * StackOverflow
   
 
-  [Go Back to the top]( #)
+  [Go Back to the top]( #flask_ip)
 
   ## License
    copyright (c) 2022 License [click to view License](lICENSE)
 
-   [Go back to the top](#)
+   [Go back to the top](#flask_ip)
 
    ## Authors Info
 
@@ -68,4 +68,4 @@
   Email - [Agnes Kaswii]
   agneskaswii700@gmail.com
 
-  [Go back to the top](#)
+  [Go back to the top](#flask_ip)
