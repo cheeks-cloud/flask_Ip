@@ -22,7 +22,7 @@
         {% if post.get_comments(post.id) %}
         
         <h2> Here are the comments </h2>
-        <div class="container comments">
+        <div class="container comments"style="display:flex">
           {% for comment in post.get_comments(post.id) %}
           <p>
             {{comment.get_writer(comment.writer)}} commented that:<br>
