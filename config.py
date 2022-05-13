@@ -15,10 +15,12 @@ class Config:
 
 class ProdConfig(Config):
    SQLALCHEMY_DATABASE_URI="DATABASE_URL"
+   if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://",1)
 
 class DevConfig(Config):
   
-  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:cheeks@localhost/piches'
+  SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:cheeks@localhost/piches'
 
   DEBUG=True
 
