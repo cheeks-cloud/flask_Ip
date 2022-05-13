@@ -14,7 +14,7 @@ class Config:
   MAIL_PASSWORD = "MAIL_PASSWORD"
 
 class ProdConfig(Config):
-  pass
+   SQLALCHEMY_DATABASE_URI="DATABASE_URL"
 
 class DevConfig(Config):
   
