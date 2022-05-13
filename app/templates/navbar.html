@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Pitches and Posts</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand">Pitches and Posts </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,34 +8,34 @@
 
       <li class="nav-item active">
         <a class="nav-link" href="{{url_for('main.index')}}">
-        <button class="btn btn-sm" id="add-btn">HOME</button> </a>
+        <button class="btn btn-sm" id="add-btn">HOME</button></a>
       </li>
      
       <li class="nav-item">
-        <a class="nav-link " href="{{url_for('auth.register')}}">Register</a>
+        <a class="nav-link " href="{{url_for('auth.register')}}">
+        <button class="btn btn-sm" id="add-btn">Register</button></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link " href="{{url_for('auth.login')}}">LogIn</a>
+        <a class="nav-link " href="{{url_for('auth.login')}}">
+        <button class="btn btn-sm" id="add-btn">LogInr</button> </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link " href="{{url_for('auth.logout')}}">LOGOUT</a>
-      </li>
-      
+       
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      {% if current_user.is_authenticated %}
-      
-          
+      {% if current_user.is_authenticated %}     
         <li class="nav-item">
-          <li>
             <a  class="nav-link" href="{{url_for('auth.profile',uname=current_user.username)}}">
-            <button class="btn btn-sm" id="prof">Profile</button></a>
-          </li>
-   
-          <li style="color:black;padding:15px;">{{current_user.username}}</li>
+            <button class="btn btn-sm" id="prof"> Profile </button></a>
+        </li>
+        <li style="color:white;padding:15px;">{{current_user.username}}</li>
+
+        <li class="nav-item">
+          <a class="nav-link " href="{{url_for('auth.logout')}}">
+          <button class="btn btn-sm" id="prof"> Logout</button></a>
+        </li>
       {% endif %}
-  </li>
+  </ul>
   </div>
 </nav>
 
