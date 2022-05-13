@@ -8,9 +8,10 @@ from .. import db,photos
 
 @main.route('/')
 def index():
-    # posts = Post.query_all()
-    title = "bfrfuei"
-    return render_template('index.html',title = title)
+    posts = Post.query.all()
+    print(posts)
+    
+    return render_template('index.html',posts=posts)
 
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -38,11 +39,11 @@ def update_profile(uname):
 def write_pitch():
     form = PitchForm()
     if form.validate_on_submit():
-        post = Post(category =form.category.data,about = form.about.data,votes=form.votes.data)
+        post = Post(category =form.category.data,about = form.about.data,votes=form.votes.data,writer = current_user.id)
     
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('auth.profile',uname=current_user))
+        return redirect(url_for('auth.profile',uname=current_user.username))
 
 
     return render_template('posts.html',form = form)
@@ -63,15 +64,17 @@ def update_pic(uname):
 
 @main.route('/comment/<comment_id>/add/comment', methods = ['GET','POST'])
 @login_required
-def newComment(id):
+def newComment(comment_id):
+    print(comment_id)
     form = CommentForm() 
     if form.validate_on_submit():
-        content = form.content.data 
-        new_comment = Comment(content=content)
-        new_comment.save_comment()
-
-        return redirect(url_for('main.posts'))
+        about = form.about.data 
+        new_comment = Comment(about=about,writer=current_user.id,post=comment_id)
+        db.session.add(new_comment)
+        db.session.commit()
+       
+        return redirect(url_for('main.index'))
   
-    return render_template('comments.html',comment_form=form)
+    return render_template('auth/comments.html',comment_form=form)
 
 

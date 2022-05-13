@@ -1,42 +1,44 @@
 {% extends 'base.html' %}
 
-
 {% block styles%}
     {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static',filename='css/index.css')}}">
 {% endblock %}
-
 
 {% block content %}
 
+
 <div class="container">
     {% if posts %}
-    <div class="container">
+    <div class="card" style="width: 18rem;">
       {% for post in posts %}
-        <h3> Post Written by: {{post.get_writer(post.writer_id)}}  </h3>
-        <h4>  its in {{post.category}} Category </h4>
-        <p> The post is <i> {{post.about}} </i> </p>
-        <p> It has {{post.votes}} number of Votes </p>
-  
+      <h3> Post Written by: {{post.get_author(post.writer)}}  </h3>
+      <div class="card-body">
+        <h5 class="card-title">its in {{post.category}} Category</h5>
+        <p class="card-text">The post is <i> {{post.about}} </i></p>
+        <a href=" {{url_for('main.newComment',comment_id=post.id)}} ">Click to add comment</a>
+      </div>
     </div>
         {% if post.get_comments(post.id) %}
+        
         <h2> Here are the comments </h2>
-        <div class="comments">
+        <div class="container comments">
           {% for comment in post.get_comments(post.id) %}
           <p>
             {{comment.get_writer(comment.writer)}} commented that:<br>
   
             {{comment.about}}
           </p>
-            {% endfor %}
+           
         </div>
+      {% endfor %}
         {% else %}
         
         <p> There are no comments available on this post </p>
   
         {% endif %}
   
-      {%endfor%} 
+         {%endfor%} 
 
       </div>
 

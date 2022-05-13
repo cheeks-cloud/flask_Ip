@@ -13,7 +13,7 @@ class PitchForm(FlaskForm):
 class CommentForm(FlaskForm):
 
     title = StringField('Comment title',validators=[InputRequired()])
-    Comment = TextAreaField('Comment review', validators=[InputRequired()])
+    about = TextAreaField('Comment content', validators=[InputRequired()])
     submit = SubmitField('Submit')
     
 class UpdateProfile(FlaskForm):

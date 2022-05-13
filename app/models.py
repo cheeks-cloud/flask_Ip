@@ -47,12 +47,13 @@ class Post(db.Model):
     def get_posts():
         posts = Post.query.all()
         return posts
-    def get_writer(self,id):
-        writer =User.query.filter_by(id).first()
-        return writer.username
+
+    def get_author(self,id):
+        author = User.query.filter_by(id=id).first()
+        return author.username
 
     def get_comments(self,post):
-        all_comments = Comment.query.filter_by(post).all()
+        all_comments = Comment.query.filter_by(post=post).all()
         return all_comments
 
  
@@ -65,9 +66,9 @@ class Comment(db.Model):
     writer = db.Column(db.Integer,db.ForeignKey('users.id'))
    
    
-    def get_writer(self):
-        writer = User.query.filter_by(id=self.id).first()
-        return writer
+    def get_writer(self,id):
+        writer = User.query.filter_by(id=id).first()
+        return writer.username
 
     def get_post(self):
         post = Post.query.filter_by(id=self.id).first()

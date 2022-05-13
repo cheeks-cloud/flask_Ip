@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for,flash
 from . import auth
-from ..models import User
+from ..models import User,Post
 from .. import db
 from .forms import RegistrationForm,LoginForm
 from flask_login import login_user,logout_user,login_required
@@ -50,8 +50,8 @@ def logout():
 @login_required
 def profile(uname):
      user = User.query.filter_by(username = uname).first()
-     print(user)
-     return render_template('profile/profile.html',user = user)
+     posts = Post.query.filter_by(writer=user.id).all()
+     return render_template('profile/profile.html',user = user,posts =posts)
 
 
 

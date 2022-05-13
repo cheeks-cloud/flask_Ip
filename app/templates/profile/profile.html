@@ -43,25 +43,28 @@
         </form>
         {% endif %}
 
-      </div>
-        
-               
+      </div>      
           </div>
           
-
         </div>
         <div class="pitch">
-
           <h3>  Post A Pitch  </h3>
           <p>Click the button below to add Pitches</p>
           <a href=" {{url_for('main.write_pitch')}} "> <button> click Me  </button></a>
-   
          </div>
+         {% if posts%}
+         <h2>Your posts are</h2>
+          {% for post in posts%}
+         <div class="container">
+          {{post.category}}
+          {{post.about}}
 
+          {% endfor %}
+          
+         </div>
+         {% endif%}
         <a href="{{url_for('main.index')}}"> <button>Back Home</button></a>
         
-     
-
-
+    
 
 {% endblock %}
