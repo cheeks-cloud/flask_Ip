@@ -1,7 +1,6 @@
 import os
-
+import re
 class Config:
-  SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:cheeks@localhost/piches' 
   SQLCHEMY_TRACK_MODIFICATIONS = True
   SECRET_KEY = os.environ.get('SECRET_KEY')
   UPLOADED_PHOTOS_DEST = 'app/static/photos'
@@ -18,8 +17,8 @@ class ProdConfig(Config):
 
 
 class DevConfig(Config):
-   # SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:cheeks@localhost/piches'
-    SQLALCHEMY_DATABASE_URI= os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:cheeks@localhost/piches' 
+
     DEBUG=True
 
 
